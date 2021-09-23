@@ -1,88 +1,78 @@
-public class LinkedBag implements BagInterface{
-    //Same as bag.java, only new change is Node class
+public class LinkedBag<T> implements BagInterface<T> {
+    private Node firstNode;
+    private int numberOfEntries;
+
     public boolean add(T newEntry){
         /*test if newEntry is a valid object*/
         /*test if bag is full*/
-        if(isArrayFull())
-            return false;
-        else{
-            bag[numberOfEntries] = newEntry;
-            numberOfEntries++;
-            return true;
-        }       
-
-    }
-
-    public T[] toArray(){
-        if (isEmpty())
-            return null;
-        else{
-            T[] items = new Array(numberOfEntries);
-            for (int i=0; i<numberOfEntries; i++) {
-                items[i] = bag[i];
-            }
-            return items;
-        }
+        Node newNode = new Node(newEntry);
+        newNode.net = firstNode;
+        firstNode = newNode;
+        numberOfEntries++;  
+        return true;
     }
 
     @Override
     public int getCurrentSize() {
         // TODO Auto-generated method stub
-        for (int i = 0; i = T.length(); i++) {
-            if (T[i] != null)
-            i++;
-        }
-            return i;
-        }
+        return numberOfEntries;
+    }
+
 
     @Override
     public boolean isEmpty() {
         // TODO Auto-generated method stub
-            boolean result = true;
-            for (int i = 0; i = T.length(); i++) {
-               if (T[i] != null) {
-                result = false;
-             }
-            } 
-           return result;
+            return numberOfEntries == 0;
+            
     }
 
     @Override
-    public Object remove() {
+    public T remove() {
         // TODO Auto-generated method stub
-        return null;        
+        T result = null;
+        if (firstNode !=null)
+        {
+            result = firstNode.getData();
+            firstNode = firstNode.getNextNode();
+            numberOfEntries--;
+        }        
+        return result;
     }
 
     @Override
-    public boolean remove(Object anEntry) {
+    public boolean remove(T anEntry) {
         // TODO Auto-generated method stub
-        for (int i = 0; i = T.length(); i++) {
-           if (T[i] = this.anEntry) {
-               T[i] = null;
-               while (T[i] != null) {
-                   T[i] = T[i+1];
-               }
-           } 
-        return false; 
-    }
-    }
+        boolean result = false;
+        Node nodeN = getReferenceTo(anEntry);
+
+        if (nodeN != null)
+        {
+            //Replace located entry
+            nodeN.setData(firstNode.getData());
+            //remove first node
+            firstNode = firstNode.getNextNode();
+
+            numberOfEntries--;
+            result = true;
+        }
+        return result;
+    }    
 
     @Override
     public void clear() {
         // TODO Auto-generated method stub
-        for (int i = 0; i = T.length(); i++) {
-            T[i] = null;
-        }        
+        while(!isEmpty())
+        remove();
     }
 
     @Override
-    public int getFrequencyOf(Object anEntry) {
+    public int getFrequencyOf(T anEntry) {
         // TODO Auto-generated method stub
-        return 0;
+        
     }
 
     @Override
-    public boolean contains(Object anEntry) {
+    public boolean contains(T anEntry) {
         // TODO Auto-generated method stub
         boolean contain = false;
         for (int i = 0; i = T.length(); i++) {
@@ -95,17 +85,17 @@ public class LinkedBag implements BagInterface{
         }
         return contain;
     }
-}
+
  public class Node
  {
 
     private T data;
     private Node next;
-    private Node(Object anEntry) {
+    private Node(T anEntry) {
        this(anEntry, null);
     }
 
-    private Node(Object anEntry, Node nextNode) {
+    private Node(T anEntry, Node nextNode) {
         data = anEntry;
         next = nextNode; 
     }
@@ -119,4 +109,15 @@ public class LinkedBag implements BagInterface{
     {
         data = newData;
     }
+
+    private T getNextNode()
+    {
+        return next;
+    }
+
+    private void setNextNode(Node nextNode)
+    {
+        next = nextNode;
+    }
  }
+}
