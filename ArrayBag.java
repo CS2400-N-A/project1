@@ -209,24 +209,18 @@ public final class ArrayBag<T> implements BagInterface<T>
          throw new SecurityException("ArrayBag object is corrupt.");
    } // end checkIntegrity
 
-@Override
-public Object union(Object bag1) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	public Object union(Object bag1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-@Override
-public Object intersection(Object bag1) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	public Object intersection(Object bag1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-@Override
-public Object difference(Object bag1) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	public Object difference(Object bag1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 } // end ArrayBag
-
-
-
