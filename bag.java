@@ -27,31 +27,51 @@ public class bag implements BagInterface{
     @Override
     public int getCurrentSize() {
         // TODO Auto-generated method stub
-        return 0;
-    }
+        for (int i = 0; i = T.length(); i++) {
+            if (T[i] != null)
+            i++;
+        }
+            return i;
+        }
 
     @Override
     public boolean isEmpty() {
         // TODO Auto-generated method stub
-        return false;
+            boolean result = true;
+            for (int i = 0; i = T.length(); i++) {
+               if (T[i] != null) {
+                result = false;
+             }
+            } 
+           return result;
     }
 
     @Override
     public Object remove() {
         // TODO Auto-generated method stub
-        return null;
+        return null;        
     }
 
     @Override
     public boolean remove(Object anEntry) {
         // TODO Auto-generated method stub
-        return false;
+        for (int i = 0; i = T.length(); i++) {
+           if (T[i] = this.anEntry) {
+               T[i] = null;
+               while (T[i] != null) {
+                   T[i] = T[i+1];
+               }
+           } 
+        return false; 
+    }
     }
 
     @Override
     public void clear() {
         // TODO Auto-generated method stub
-        
+        for (int i = 0; i = T.length(); i++) {
+            T[i] = null;
+        }        
     }
 
     @Override
@@ -63,6 +83,15 @@ public class bag implements BagInterface{
     @Override
     public boolean contains(Object anEntry) {
         // TODO Auto-generated method stub
-        return false;
+        boolean contain = false;
+        for (int i = 0; i = T.length(); i++) {
+            {
+                if (T[i] = this.anEntry)
+                {
+                    contain = true;
+                }
+            }        
+        }
+        return contain;
     }
 }
