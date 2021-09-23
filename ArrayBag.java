@@ -7,7 +7,7 @@ public final class ArrayBag<T> implements BagInterface<T>
 {
 	private final T[] bag; 
 	private int numberOfEntries;
-   private boolean integrityOK = false;
+    private boolean integrityOK = false;
 	private static final int DEFAULT_CAPACITY = 25;
 	private static final int MAX_CAPACITY = 10000;
 
@@ -210,19 +210,19 @@ public final class ArrayBag<T> implements BagInterface<T>
    } // end checkIntegrity
 
 @Override
-public Object union(bag bag1) {
+public Object union(Object bag1) {
 	// TODO Auto-generated method stub
 	return null;
 }
 
 @Override
-public Object intersection(bag bag1) {
+public Object intersection(Object bag1) {
 	// TODO Auto-generated method stub
 	return null;
 }
 
 @Override
-public Object difference(bag bag1) {
+public Object difference(Object bag1) {
 	// TODO Auto-generated method stub
 	return null;
 }
