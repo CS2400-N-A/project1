@@ -1,7 +1,5 @@
-public class bag implements BagInterface{
-    private final T[] bag;
-    private static final int DEFAULT_CAPACITY =  25;
-    private int numberOfEntries;
+public class LinkedBag implements BagInterface{
+    //Same as bag.java, only new change is Node class
     public boolean add(T newEntry){
         /*test if newEntry is a valid object*/
         /*test if bag is full*/
@@ -98,3 +96,27 @@ public class bag implements BagInterface{
         return contain;
     }
 }
+ public class Node
+ {
+
+    private T data;
+    private Node next;
+    private Node(Object anEntry) {
+       this(anEntry, null);
+    }
+
+    private Node(Object anEntry, Node nextNode) {
+        data = anEntry;
+        next = nextNode; 
+    }
+
+    private T getData()
+    {
+        return data;
+    }
+
+    private void setData(T newData)
+    {
+        data = newData;
+    }
+ }
