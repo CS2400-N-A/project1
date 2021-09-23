@@ -223,80 +223,28 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
 
-   @Override
    public Object union(Object bag1) {
-      // TODO Auto-generated method stub
-      return null;
+      @SuppressWarnings("unchecked")
+      ResizableArrayBag<T> otherBag = (ResizableArrayBag<T>)bag1;
+      checkintegrity();
+      otherBag.checkintegrity();
+      T[] thisContents = this.toArray();
+      T[] otherContents = otherBag.toArray();
+      ResizableArrayBag<T> unionBag= new ResizableArrayBag<T>();
+      for (T elements : thisContents) {
+         unionBag.add(elements);
+      }
+      for (T elements : otherContents) {
+         unionBag.add(elements);
+      }
+      return unionBag;
    }
 
-   @Override
    public Object intersection(Object bag1) {
-      // TODO Auto-generated method stub
-      return null;
+      return new ResizableArrayBag<T>();
    }
 
-   @Override
    public Object difference(Object bag1) {
-      // TODO Auto-generated method stub
-      return null;
+      return new ResizableArrayBag<T>();
    }
 } // end ResizableArrayBag
-
-/*
- Testing isEmpty with an empty bag:
- isEmpty finds the bag empty: OK.
- 
- Adding to the bag more strings than its initial capacity.
- Adding to the bag: A D B A C A D
- The bag contains 7 string(s), as follows:
- A D B A C A D
- Testing isEmpty with a bag that is not empty:
- isEmpty finds the bag not empty: OK.
- 
- 
- Testing the method getFrequencyOf:
- In this bag, the count of A is 3
- In this bag, the count of B is 1
- In this bag, the count of C is 1
- In this bag, the count of D is 2
- In this bag, the count of Z is 0
- 
- Testing the method contains:
- Does this bag contain A? true
- Does this bag contain B? true
- Does this bag contain C? true
- Does this bag contain D? true
- Does this bag contain Z? false
- 
- Removing a string from the bag:
- remove() returns D
- The bag contains 6 string(s), as follows:
- A D B A C A
- 
- Removing "B" from the bag:
- remove("B") returns true
- The bag contains 5 string(s), as follows:
- A D A A C
- 
- Removing "A" from the bag:
- remove("A") returns true
- The bag contains 4 string(s), as follows:
- C D A A
- 
- Removing "C" from the bag:
- remove("C") returns true
- The bag contains 3 string(s), as follows:
- A D A
- 
- Removing "Z" from the bag:
- remove("Z") returns false
- The bag contains 3 string(s), as follows:
- A D A
- 
- Clearing the bag:
- Testing isEmpty with an empty bag:
- isEmpty finds the bag empty: OK.
- 
- The bag contains 0 string(s), as follows:
- */
-
