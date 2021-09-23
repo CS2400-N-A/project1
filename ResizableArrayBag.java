@@ -223,6 +223,10 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
 
+   /** Returns a new bag that contains both elements of the bag, including duplicates.
+     * Does not affect the contents of the bags used.
+       @param bag1 The bag you want to union with.
+       @return  The union of both bags as a new bag. Order does not matter and duplicates are allowed. */
    public Object union(Object bag1) {
       @SuppressWarnings("unchecked")
       ResizableArrayBag<T> otherBag = (ResizableArrayBag<T>)bag1;
@@ -239,11 +243,20 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       }
       return unionBag;
    }
-
+   
+   /** Returns a new bag that contains elements that only appear in both bags. Duplicate items are counted
+     * if both bags contain that duplicate item.
+     * Does not affect the contents of the bags used.
+       @param bag1  The bag you want to intersect with
+       @return  The intersection of both bags as a new bag. */
    public Object intersection(Object bag1) {
       return new ResizableArrayBag<T>();
    }
 
+   /** Returns a new bag that contains elements in one bag after removing the elements that are found
+     * in another bag. Does not affect the contents of the bags used.
+       @param bag1 The bag that elements you don't want in the first bag.
+       @return  The difference of both bags as a new bag. */
    public Object difference(Object bag1) {
       return new ResizableArrayBag<T>();
    }
