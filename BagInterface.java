@@ -49,19 +49,19 @@ public interface BagInterface<T>
     * Does not affect the contents of the bags used.
     *  @param bag1 The bag you want to union with.
        @return  The union of both bags as a new bag. Order does not matter and duplicates are allowed. */
-    public bag union(bag bag1);
+    public Object union(bag bag1);
 
     /** Returns a new bag that contains elements that only appear in both bags. Duplicate items are counted
      * if both bags contain that duplicate item.
      * Does not affect the contents of the bags used.
      * @param bag1  The bag you want to intersect with
      * @return  The intersection of both bags as a new bag. */
-    public bag intersection(bag bag1);
+    public Object intersection(bag bag1);
 
     /** Returns a new bag that contains elements in one bag after removing the elements that are found
      * in another bag. Does not affect the contents of the bags used.
      * @param bag1 The bag that elements you don't want in the first bag.
      * @return  The difference of both bags as a new bag. */
-    public bag difference(bag bag1);
+    public Object difference(bag bag1);
 
 } // end BagInterface
