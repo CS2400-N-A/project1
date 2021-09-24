@@ -1,1 +1,1 @@
-Carlos Castrillo
+Carlos Castrillo - worked on Union for ResizableArrayBag
