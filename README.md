@@ -1,1 +1,2 @@
-Carlos Castrillo - worked on Union for ResizableArrayBag
+Carlos Castrillo - worked on Union for ResizableArrayBag, defined union, intersection, and difference in BagInterface, added remove, remove(T), clear, getFrequencyOf, and contains to LinkedBag, worked on Intersection
+for LinkedBag
