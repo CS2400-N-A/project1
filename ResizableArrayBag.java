@@ -250,7 +250,19 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
        @param bag1  The bag you want to intersect with
        @return  The intersection of both bags as a new bag. */
    public Object intersection(Object bag1) {
-      return new ResizableArrayBag<T>();
+      @SuppressWarnings("unchecked")
+      ResizableArrayBag<T> otherBag = (ResizableArrayBag<T>)bag1;
+      checkintegrity();
+      otherBag.checkintegrity();
+      T[] thisContents = this.toArray();
+      ResizableArrayBag<T> intersectionBag = new ResizableArrayBag<T>();
+      for (T thisElements : thisContents) {
+         if(otherBag.contains(thisElements)){
+            intersectionBag.add(thisElements);
+            otherBag.remove(thisElements);
+         }
+      }
+      return intersectionBag;
    }
 
    /** Returns a new bag that contains elements in one bag after removing the elements that are found
