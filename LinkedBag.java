@@ -93,8 +93,8 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   do{
 		   if(current.data.equals(anEntry)){
 				Node temp=current;
-				firstNode=current;
-				current=temp;
+				current=firstNode;
+				firstNode=temp;
 				firstNode=null;
 				numberOfEntries--;
 			    return true;
