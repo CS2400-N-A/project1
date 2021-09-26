@@ -75,7 +75,8 @@ public final class LinkedBag<T> implements BagInterface<T>
                 was successful, or null. */
 	public T remove()
    {
-      return null; // STUB
+      firstNode.next=null;
+	  return firstNode.data;
    } // end remove
    
 	/** Removes one occurrence of a given entry from this bag.
@@ -83,7 +84,7 @@ public final class LinkedBag<T> implements BagInterface<T>
        @return  True if the removal was successful, or false otherwise. */
    public boolean remove(T anEntry)
    {
-      return false; // STUB
+      return false;
    } // end remove
 	
 	/** Removes all entries from this bag. */
@@ -96,7 +97,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 		 @param anEntry  The entry to be counted.
 		 @return  The number of times anEntry appears in the bag. */
 	public int getFrequencyOf(T anEntry)
-   {
+   {   
       return 0; // STUB
    } // end getFrequencyOf
 	
