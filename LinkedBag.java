@@ -68,16 +68,16 @@ public final class LinkedBag<T> implements BagInterface<T>
 		return numberOfEntries;
 	} // end getCurrentSize
    
-// STUBS:
-
 	/** Removes one unspecified entry from this bag, if possible.
        @return  Either the removed entry, if the removal
                 was successful, or null. */
 	public T remove()
    {
 	   if(firstNode!=null){
-      		firstNode.next=firstNode;
-	  		return firstNode.data;
+		    T data=firstNode.data;
+      		firstNode=firstNode.next;
+			numberOfEntries--;
+	  		return data;
 		}
 		return null;
    } // end remove
@@ -90,13 +90,17 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   Node current=firstNode;
 	   if(current==null)
 	   		return false;
-	   while(current.next!=null){
+	   do{
 		   if(current.data.equals(anEntry)){
-
-			   return true;
+				Node temp=current;
+				firstNode=current;
+				current=temp;
+				firstNode=null;
+				numberOfEntries--;
+			    return true;
 		   }
 		   current=current.next;
-	   }
+	   }while(current.next!=null);
       return false;
    } // end remove
 	
@@ -104,6 +108,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 	public void clear()
    {
 	   firstNode=null;
+	   numberOfEntries=0;
    } // end clear
 	
 	/** Counts the number of times a given entry appears in this bag.
