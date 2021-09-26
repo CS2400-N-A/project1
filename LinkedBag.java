@@ -159,8 +159,33 @@ public final class LinkedBag<T> implements BagInterface<T>
         @param bag1  The bag you want to intersect with
         @return  The intersection of both bags as a new bag. */
 	public Object intersection(Object bag1) {
-		// TODO Auto-generated method stub
-		return null;
+		@SuppressWarnings("unchecked")
+		LinkedBag<T> otherBag = (LinkedBag<T>)bag1;
+		if(firstNode==null || otherBag.isEmpty())
+			return new LinkedBag<T>();
+		LinkedBag<T> intersectionBag = new LinkedBag<T>();
+		T[] items = this.toArray();
+		boolean[] appears = new boolean[items.length];
+		for (int i = 0; i < items.length; i++) {
+			appears[i]=otherBag.contains(items[i]);
+		}
+		for (int i = 0; i < appears.length; i++) {
+			if (appears[i]){
+				int frequencyThis = this.getFrequencyOf(items[i]);
+				int frequencyOther = otherBag.getFrequencyOf(items[i]);
+				if(frequencyThis<=frequencyOther){
+					for(int j = 0; j < frequencyThis; j++){
+						intersectionBag.add(items[i]);
+					}
+				}
+				else{
+					for(int j = 0; j < frequencyOther; j++){
+						intersectionBag.add(items[i]);
+					}
+				}
+			}
+		}
+		return intersectionBag;
 	}
 
 	/** Returns a new bag that contains elements in one bag after removing the elements that are found
