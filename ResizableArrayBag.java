@@ -258,6 +258,20 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
        @param bag1 The bag that elements you don't want in the first bag.
        @return  The difference of both bags as a new bag. */
    public Object difference(Object bag1) {
-      return new ResizableArrayBag<T>();
+      @SuppressWarnings("unchecked")
+      ResizableArrayBag<T> otherBag = (ResizableArrayBag<T>)bag1;
+      checkintegrity();
+      otherBag.checkintegrity();
+      T[] thisContents = this.toArray();
+      T[] otherContents = otherBag.toArray();
+      ResizableArrayBag<T> differentBag = this;
+      for (int i = 0; i < thisContents.length; i++)
+      {
+         for (int j = 0; j < otherContents.length; j++) {
+         if (!(thisContents[i].equals(otherContents[j])))        
+            differentBag.removeEntry(i);
+      }
+   }
+      return differentBag;
    }
 } // end ResizableArrayBag

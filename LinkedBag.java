@@ -150,6 +150,17 @@ public final class LinkedBag<T> implements BagInterface<T>
     	@return  The union of both bags as a new bag. Order does not matter and duplicates are allowed. */
 	public Object union(Object bag1) {
 		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
+		LinkedBag<T> otherBag = (LinkedBag<T>)bag1;
+		if (firstNode==null || otherBag.isEmpty())
+			return new LinkedBag<T>();
+		LinkedBag<T> unifiiedBag = new LinkedBag<T>();
+		T[] items = this.toArray();
+		for (int i = 0; i < items.length; i++) {
+			unifiedBag.add(items[i]);
+		}
+		
+
 		return null;
 	}
 
