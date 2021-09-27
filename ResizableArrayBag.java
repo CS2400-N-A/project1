@@ -255,11 +255,14 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       checkintegrity();
       otherBag.checkintegrity();
       T[] thisContents = this.toArray();
+      T[] otherContents = otherBag.toArray();
       ResizableArrayBag<T> intersectionBag = new ResizableArrayBag<T>();
       for (T thisElements : thisContents) {
-         if(otherBag.contains(thisElements)){
-            intersectionBag.add(thisElements);
-            otherBag.remove(thisElements);
+         for (T otherElements : otherContents){
+            if (thisElements.equals(otherElements)){
+               intersectionBag.add(thisElements);
+               break;
+            }
          }
       }
       return intersectionBag;
@@ -275,18 +278,27 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       checkintegrity();
       otherBag.checkintegrity();
       T[] thisContents = this.toArray();
+      T[] otherContents = otherBag.toArray();
       ResizableArrayBag<T> differenceBag= new ResizableArrayBag<T>();
 
-      for (T elements : thisContents) {
-         if (otherBag.contains(elements)) {
-            this.remove(elements);
+      /*for (T thisElements : thisContents) {
+         for (T otherElements : otherContents){
+            if (thisElements.equals(otherElements)) {
+               break;
+            } else if (!dup && {
+               differenceBag.add(thisElements);
+            }
          }
-      }
-      
-      thisContents = this.toArray();
-
-      for (T elements : thisContents) {
-         differenceBag.add(elements);
+      }*/
+      for (int i = 0; i < thisContents.length; i++) {
+         for (int j = 0; j< otherContents.length; j++) {
+            if (thisContents[i].equals(otherContents[j])) {
+               otherContents[j] = null;
+               break;
+            } else if (j == otherContents.length - 1) {
+               differenceBag.add(thisContents[i]);
+            }
+         }
       }
       return differenceBag;
    }
