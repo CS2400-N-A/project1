@@ -5,4 +5,6 @@ Cindy Lu - worked on intersection and difference methods for ResizeableArrayBag,
 
 Orrane Reid - worked on Union for LinkedBag, worked on testUnion, testIntersection, and testDifference for LinkedBagTest.
 
-https://youtu.be/ROL3n92AbFM
+Video link - https://youtu.be/ROL3n92AbFM
+
+Javadocs - [javadocs](/docs/index.html)
