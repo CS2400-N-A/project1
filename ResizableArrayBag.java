@@ -250,7 +250,22 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
        @param bag1  The bag you want to intersect with
        @return  The intersection of both bags as a new bag. */
    public Object intersection(Object bag1) {
-      return new ResizableArrayBag<T>();
+      @SuppressWarnings("unchecked")
+      ResizableArrayBag<T> otherBag = (ResizableArrayBag<T>)bag1;
+      checkintegrity();
+      otherBag.checkintegrity();
+      T[] thisContents = this.toArray();
+      T[] otherContents = otherBag.toArray();
+      ResizableArrayBag<T> intersectionBag = new ResizableArrayBag<T>();
+      for (T thisElements : thisContents) {
+         for (T otherElements : otherContents){
+            if (thisElements.equals(otherElements)){
+               intersectionBag.add(thisElements);
+               break;
+            }
+         }
+      }
+      return intersectionBag;
    }
 
    /** Returns a new bag that contains elements in one bag after removing the elements that are found
@@ -264,14 +279,18 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       otherBag.checkintegrity();
       T[] thisContents = this.toArray();
       T[] otherContents = otherBag.toArray();
-      ResizableArrayBag<T> differentBag = this;
-      for (int i = 0; i < thisContents.length; i++)
-      {
-         for (int j = 0; j < otherContents.length; j++) {
-         if (!(thisContents[i].equals(otherContents[j])))        
-            differentBag.removeEntry(i);
+      ResizableArrayBag<T> differenceBag= new ResizableArrayBag<T>();
+
+      for (int i = 0; i < thisContents.length; i++) {
+         for (int j = 0; j< otherContents.length; j++) {
+            if (thisContents[i].equals(otherContents[j])) {
+               otherContents[j] = null;
+               break;
+            } else if (j == otherContents.length - 1) {
+               differenceBag.add(thisContents[i]);
+            }
+         }
       }
-   }
-      return differentBag;
+      return differenceBag;
    }
 } // end ResizableArrayBag
