@@ -208,7 +208,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 		if (firstNode == null || otherBag.isEmpty()) {
 			return new LinkedBag<T>();
 		}
-		LinkedBag<T> differenceBag = this;
+		LinkedBag<T> differenceBag = LinkedBag<T>();
 		T[] thisItems = this.toArray();
 		T[] otherItems = otherBag.toArray();
 		for (int i = 0; i < thisItems.length; i++) {
