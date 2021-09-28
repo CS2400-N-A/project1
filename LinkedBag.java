@@ -152,16 +152,18 @@ public final class LinkedBag<T> implements BagInterface<T>
 		// TODO Auto-generated method stub
 		@SuppressWarnings("unchecked")
 		LinkedBag<T> otherBag = (LinkedBag<T>)bag1;
-		if (firstNode==null || otherBag.isEmpty())
-			return new LinkedBag<T>();
-		LinkedBag<T> unifiiedBag = new LinkedBag<T>();
+		LinkedBag<T> unifiedBag = new LinkedBag<T>();
+		if (!(firstNode==null || otherBag.isEmpty())) {
 		T[] items = this.toArray();
+		T[] items2 = otherBag.toArray();
 		for (int i = 0; i < items.length; i++) {
 			unifiedBag.add(items[i]);
+			unifiedBag.add(items2[i]);
 		}
+	}
 		
 
-		return null;
+		return unifiedBag;
 	}
 
 	/** Returns a new bag that contains elements that only appear in both bags. Duplicate items are counted
