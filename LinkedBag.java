@@ -152,8 +152,14 @@ public final class LinkedBag<T> implements BagInterface<T>
 		// TODO Auto-generated method stub
 		@SuppressWarnings("unchecked")
 		LinkedBag<T> otherBag = (LinkedBag<T>)bag1;
+<<<<<<< HEAD
 		LinkedBag<T> unifiedBag = new LinkedBag<T>();
 		if (!(firstNode==null || otherBag.isEmpty())) {
+=======
+		if (firstNode==null || otherBag.isEmpty())
+			return new LinkedBag<T>();
+		LinkedBag<T> unifiedBag = new LinkedBag<T>();
+>>>>>>> 977f4b87dba810f17374e43674476d760609a84b
 		T[] items = this.toArray();
 		T[] items2 = otherBag.toArray();
 		for (int i = 0; i < items.length; i++) {
@@ -206,8 +212,26 @@ public final class LinkedBag<T> implements BagInterface<T>
         @param bag1 The bag that elements you don't want in the first bag.
         @return  The difference of both bags as a new bag. */
 	public Object difference(Object bag1) {
-		// TODO Auto-generated method stub
-		return null;
+		@SuppressWarnings("unchecked")
+		LinkedBag<T> otherBag = (LinkedBag<T>) bag1;
+		if (firstNode == null || otherBag.isEmpty()) {
+			return new LinkedBag<T>();
+		}
+		LinkedBag<T> differenceBag = this;
+		T[] thisItems = this.toArray();
+		T[] otherItems = otherBag.toArray();
+		for (int i = 0; i < thisItems.length; i++) {
+			for (int j = 0; j < otherItems.length; j++) {
+				if (thisItems[i].equals(otherItems[j])) {
+					otherItems[j] = null;
+					break;
+				} else if (j == otherItems.length -1) {
+					differenceBag.add(thisItems[i]);
+				}
+				
+			}
+		}
+		return differenceBag;
 	}
 
 	private class Node
