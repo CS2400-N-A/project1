@@ -281,15 +281,6 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       T[] otherContents = otherBag.toArray();
       ResizableArrayBag<T> differenceBag= new ResizableArrayBag<T>();
 
-      /*for (T thisElements : thisContents) {
-         for (T otherElements : otherContents){
-            if (thisElements.equals(otherElements)) {
-               break;
-            } else if (!dup && {
-               differenceBag.add(thisElements);
-            }
-         }
-      }*/
       for (int i = 0; i < thisContents.length; i++) {
          for (int j = 0; j< otherContents.length; j++) {
             if (thisContents[i].equals(otherContents[j])) {
