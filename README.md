@@ -7,4 +7,4 @@ Orrane Reid - worked on Union for LinkedBag, worked on testUnion, testIntersecti
 
 Video link - https://youtu.be/ROL3n92AbFM
 
-Javadocs - https://cjcastrillo.github.io/bagProject/
+Javadocs - https://cs2400-n-a.github.io/project1/
